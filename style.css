@@ -7,7 +7,7 @@ html, body {
 }
 
 body {
-	background: black;
+	background: white;
 	min-height: 100%;
 	font-family: "Arial", sans-serif;
 }
@@ -37,7 +37,7 @@ body {
 		background: #bcffcc;
 	}
 	100% {
-		background: white;
+		background: black;
 	}
 }
 
@@ -63,7 +63,7 @@ body {
 		display: block;
 		transform-style: preserve-3d;
 		transition: .4s ease-in-out;
-		background: white;
+		background: black;
 
 		&.picked, &.matched {
 			transform: rotateY(180deg);
