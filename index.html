@@ -1,199 +1,489 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Gameofhoas</title>
-     <style>
-	   .rowdiv{
-            position: relative;
-            display: inline-block;            
-            padding: 0px;
-        }
-		
-        .imgdiv{
-            position: relative;
-            display: inline-block;
-            width:82px;
-            height: 82px;
-            line-height: 82px;
-            font-size: 10px;
-            padding: 6px;
-            text-align: center;
-            border: 1px solid blue;
-            cursor: pointer;
-        }
-        
-        img{
-            width:80px;
-            height: 80px;
-            padding: 0px;
-        }
-
-        .hide{
-            padding: 0px;
-            visibility: hidden;
-        }
-
-        .match, .showimg{
-            visibility: visible !important;
-        }
-
-    </style>
-
-    <script>
- 
-	var availableImages=[		
-		'https://www.chemistrylearner.com/wp-content/uploads/2018/12/Americium-Symbol-150x150.jpg',
-		'https://www.chemistrylearner.com/wp-content/uploads/2018/12/Polonium-Symbol-150x150.jpg',
-		'https://www.chemistrylearner.com/wp-content/uploads/2018/10/Aluminum-Symbol-150x150.jpg',
-		'https://www.chemistrylearner.com/wp-content/uploads/2018/10/Rutherfordium-Symbol-150x150.jpg',
-		'https://www.chemistrylearner.com/wp-content/uploads/2018/10/Silver-Symbol-150x150.jpg',
-		'https://www.chemistrylearner.com/wp-content/uploads/2018/10/Hydrogen-Symbol-150x150.jpg',
-		'https://www.chemistrylearner.com/wp-content/uploads/2018/10/Sodium-Symbol-150x150.jpg',
-		'https://www.chemistrylearner.com/wp-content/uploads/2018/10/Palladium-Symbol-150x150.jpg',
-		'https://www.chemistrylearner.com/wp-content/uploads/2018/10/Titanium-Symbol-150x150.jpg',
-		'https://www.chemistrylearner.com/wp-content/uploads/2018/10/Lithium-Symbol-150x150.jpg',
-		'https://www.chemistrylearner.com/wp-content/uploads/2018/09/Sulfur-Symbol-150x150.jpg',
-		'https://www.chemistrylearner.com/wp-content/uploads/2018/09/Copper-Symbol-150x150.jpg',
-		'https://www.chemistrylearner.com/wp-content/uploads/2018/09/Phosphorus-Symbol-150x150.jpg',
-		'https://www.chemistrylearner.com/wp-content/uploads/2018/09/Nitrogen-Symbol-150x150.jpg',
-		'https://www.chemistrylearner.com/wp-content/uploads/2018/09/Mercury-Symbol-1-150x150.jpg',
-		'https://www.chemistrylearner.com/wp-content/uploads/2018/09/Calcium-Symbol-150x150.jpg'	
-	]
-
-	function start(){
-		
-		
-		var ImagesCopy = [];		
-		ImagesCopy = ImagesCopy.concat(availableImages);
-		//-- tăng gắp đôi số hình
-		ImagesCopy = ImagesCopy.concat(availableImages);
-				
-		let moves =0;
-		// xóa hình hiện tại, và khởi tạo mới
-		const maindiv = document.getElementById("boardgame");
-		while (maindiv.firstChild) {
-			maindiv.removeChild(maindiv.lastChild);
-		}
-		const scorediv = document.getElementById("score");
-		while (scorediv.firstChild) {
-		   scorediv.removeChild(scorediv.lastChild);
-		}
-		
-		//tổng số hình
-		let TotalImage = ImagesCopy.length;
-		
-		//	
-		var row = document.createElement('div');	
-		row.setAttribute('class', 'rowdiv');
-		
-		for(let j=1; j <= TotalImage; j++){
-		
-			// tao mới div
-			var div = document.createElement('div');
-			
-			// gán thuộc tính class ="imgdiv"			
-			div.setAttribute('class', 'imgdiv');
-			
-			// tạo tag img 
-			var image = document.createElement('img');
-			
-			//-- sinh số ngẫu nhiên trong khoảng 1 -> ImagesCopy.length
-			var ramdom = Math.floor(Math.random() * ImagesCopy.length); 
-			
-			// lấy 1 link hình ra khỏi mảng ImagesCopy
-			let randomImg = ImagesCopy.splice(ramdom, 1);
-			
-			// gán link hình vào tag <img src= >
-			image.setAttribute('src',randomImg);
-			
-			// gán thuộc tính ẩn cho tag <img src= >
-			image.setAttribute('class','hide');
-			
-			// gắn thêm vào div			
-			div.appendChild(image);
-			
-			// gắn div vào row
-			row.appendChild(div);
-						
-			let rowIndex = j % 8; // 1 dòng 8 hình
-			if(rowIndex == 0){
-				
-				// gắn dòng ( row ) vào boardgame
-				document.getElementById('boardgame').append(row);
-				
-				// tạo dòng mới
-				row = document.createElement('div');
-				row.setAttribute('class', 'rowdiv');
-			}
-
-			// gắn sự kiện click vào tag div
-			div.addEventListener('click',function(event){
-				moves++;
-				let curr = event.currentTarget.children;
-				
-				// div vừa nhấn
-				let imageClicked = curr[0];
-				
-				// lấy hình có thuộc tính showimg
-			    var imageShowing = document.getElementsByClassName('showimg');
-				
-				let flagMatch = 0;
-				if(imageShowing.length >= 1){
-					for(let i=0; i < imageShowing.length; i++)
-					{
-						if(imageShowing[i].src != imageClicked.src){
-							// 2 hình không giống nhau 
-							// xóa thuộc tính showimg 
-							imageShowing[i].classList.remove('showimg');
-						}						
-						else{
-							// gắn thuộc tính match cho imageShowing[i]
-							imageShowing[i].classList.add('match');
-							
-							// gắn thuộc tính match cho imageClicked
-							imageClicked.classList.add('match')
-							
-							// thông báo flagMatch 
-							flagMatch = 1;
-						}
-					}
-				}
-
-				if(document.getElementsByClassName('match').length == TotalImage){
-					// == TotalImage ==> tất cả hình đã mở					
-					
-					//alert("You won !!! ")					
-					let button = document.createElement('button');
-					button.setAttribute('class' , 'btn btn-warning');
-					
-					let node= document.createTextNode("Bạn đã trở thành phù thủy hóa học quyền năng trong" + moves + " lần thử!");
-					
-					button.appendChild(node)
-					document.getElementById('score').appendChild(button) 
-				}
-
-				if(flagMatch == 0){
-					// không match
-					imageClicked.classList.add('showimg');
-				}				
-			})
-		}
-	}
-
-	</script>
-   
+<style>
+body {background-color: powderblue;}
+h1   {
+	border: 2px solid yellow;
+    padding: 30px;
+    margin: 30px;
+    background-color: tomato;
+	color: blue;
+    
+    font-size: 250%;
+    text-align: center; }
+h2    {
+    text-align: center;}
+p	  {text-align: center;}
+</style>
 </head>
 <body>
-    <div class="container">
-         <h1>Gameofhoas</h1>
-		<h2>match nguyến tố với số proton tương ứng</h2>
-        
-        <button class="btn btn-success" onclick="start()">Start game</button><br><br>
-        <div id="score"></div>
-        <div id="boardgame"></div>
-    </div>
-    
+
+<h1>Facts về nguyên tố</h1>
+<h2>Đứa con tinh thần của các bạn tổ 1-10CH</h2>
+<table class="wikitable">
+<tbody><tr>
+<td bgcolor="#ff9999">1<br /><a href="/wiki/Hydrogen" title="Hydrogen">H</a>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td bgcolor="#ff9999">2<br /><a href="/wiki/Helium" title="Helium">He</a>
+</td>
+</tr>
+<tr>
+<td bgcolor="#ff9999">3<br /><a href="/wiki/Lithium" title="Lithium">Li</a>
+</td>
+<td bgcolor="#ff9999">4<br /><a href="/wiki/Beryllium" title="Beryllium">Be</a>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td bgcolor="#fdff8c">5<br /><a href="/wiki/Boron" title="Boron">B</a>
+</td>
+<td bgcolor="#fdff8c">6<br /><a href="/wiki/Carbon" title="Carbon">C</a>
+</td>
+<td bgcolor="#fdff8c">7<br /><a href="/wiki/Nitrogen" title="Nitrogen">N</a>
+</td>
+<td bgcolor="#fdff8c">8<br /><a href="/wiki/Oxygen" title="Oxygen">O</a>
+</td>
+<td bgcolor="#fdff8c">9<br /><a href="https://factvenguyento.blogspot.com/2021/10/flo.html" title="Fluorine"><b>F</b></a>
+</td>
+<td bgcolor="#fdff8c">10<br /><a href="https://factvenguyento.blogspot.com/2021/10/neon.html" title="Neon"><b>Ne</b></a>
+</td>
+</tr>
+<tr>
+<td bgcolor="#ff9999">11<br /><a href="/wiki/Sodium" title="Sodium">Na</a>
+</td>
+<td bgcolor="#ff9999">12<br /><a href="/wiki/Magnesium" title="Magnesium">Mg</a>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td bgcolor="#fdff8c">13<br /><a href="/wiki/Aluminium" title="Aluminium">Al</a>
+</td>
+<td bgcolor="#fdff8c">14<br /><a href="/wiki/Silicon" title="Silicon">Si</a>
+</td>
+<td bgcolor="#fdff8c">15<br /><a href="https://factvenguyento.blogspot.com/2021/10/phosphor.html" title="Phosphorus"><b>P</b></a>
+</td>
+<td bgcolor="#fdff8c">16<br /><a href="/wiki/Sulfur" title="Sulfur">S</a>
+</td>
+<td bgcolor="#fdff8c">17<br /><a href="https://factvenguyento.blogspot.com/2021/10/clo.html" title="Chlorine"><b>Cl</b></a>
+</td>
+<td bgcolor="#fdff8c">18<br /><a href="/wiki/Argon" title="Argon">Ar</a>
+</td>
+</tr>
+<tr>
+<td bgcolor="#ff9999">19<br /><a href="/wiki/Potassium" title="Potassium">K</a>
+</td>
+<td bgcolor="#ff9999">20<br /><a href="/wiki/Calcium" title="Calcium">Ca</a>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td bgcolor="#99ccff">21<br /><a href="/wiki/Scandium" title="Scandium">Sc</a>
+</td>
+<td bgcolor="#99ccff">22<br /><a href="https://factvenguyento.blogspot.com/2021/10/titanium.html" title="Titanium"><b>Ti</b></a>
+</td>
+<td bgcolor="#99ccff">23<br /><a href="/wiki/Vanadium" title="Vanadium">V</a>
+</td>
+<td bgcolor="#99ccff">24<br /><a href="https://factvenguyento.blogspot.com/2021/10/crom-kim-loai-cung-nhat-gioi.html" title="Chromium"><b>Cr</b></a>
+</td>
+<td bgcolor="#99ccff">25<br /><a href="/wiki/Manganese" title="Manganese">Mn</a>
+</td>
+<td bgcolor="#99ccff">26<br /><a href="/wiki/Iron" title="Iron">Fe</a>
+</td>
+<td bgcolor="#99ccff">27<br /><a href="/wiki/Cobalt" title="Cobalt">Co</a>
+</td>
+<td bgcolor="#99ccff">28<br /><a href="/wiki/Nickel" title="Nickel">Ni</a>
+</td>
+<td bgcolor="#99ccff">29<br /><a href="/wiki/Copper" title="Copper">Cu</a>
+</td>
+<td bgcolor="#99ccff">30<br /><a href="/wiki/Zinc" title="Zinc">Zn</a>
+</td>
+<td bgcolor="#fdff8c">31<br /><a href="/wiki/Gallium" title="Gallium">Ga</a>
+</td>
+<td bgcolor="#fdff8c">32<br /><a href="/wiki/Germanium" title="Germanium">Ge</a>
+</td>
+<td bgcolor="#fdff8c">33<br /><a href="/wiki/Arsenic" title="Arsenic">As</a>
+</td>
+<td bgcolor="#fdff8c">34<br /><a href="/wiki/Selenium" title="Selenium">Se</a>
+</td>
+<td bgcolor="#fdff8c">35<br /><a href="/wiki/Bromine" title="Bromine">Br</a>
+</td>
+<td bgcolor="#fdff8c">36<br /><a href="/wiki/Krypton" title="Krypton">Kr</a>
+</td>
+</tr>
+<tr>
+<td bgcolor="#ff9999">37<br /><a href="/wiki/Rubidium" title="Rubidium">Rb</a>
+</td>
+<td bgcolor="#ff9999">38<br /><a href="/wiki/Strontium" title="Strontium">Sr</a>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td bgcolor="#99ccff">39<br /><a href="/wiki/Yttrium" title="Yttrium">Y</a>
+</td>
+<td bgcolor="#99ccff">40<br /><a href="/wiki/Zirconium" title="Zirconium">Zr</a>
+</td>
+<td bgcolor="#99ccff">41<br /><a href="/wiki/Niobium" title="Niobium">Nb</a>
+</td>
+<td bgcolor="#99ccff">42<br /><a href="/wiki/Molybdenum" title="Molybdenum">Mo</a>
+</td>
+<td bgcolor="#99ccff">43<br /><a href="/wiki/Technetium" title="Technetium">Tc</a>
+</td>
+<td bgcolor="#99ccff">44<br /><a href="/wiki/Ruthenium" title="Ruthenium">Ru</a>
+</td>
+<td bgcolor="#99ccff">45<br /><a href="/wiki/Rhodium" title="Rhodium">Rh</a>
+</td>
+<td bgcolor="#99ccff">46<br /><a href="/wiki/Palladium" title="Palladium">Pd</a>
+</td>
+<td bgcolor="#99ccff">47<br /><a href="/wiki/Silver" title="Silver">Ag</a>
+</td>
+<td bgcolor="#99ccff">48<br /><a href="/wiki/Cadmium" title="Cadmium">Cd</a>
+</td>
+<td bgcolor="#fdff8c">49<br /><a href="/wiki/Indium" title="Indium">In</a>
+</td>
+<td bgcolor="#fdff8c">50<br /><a href="/wiki/Tin" title="Tin">Sn</a>
+</td>
+<td bgcolor="#fdff8c">51<br /><a href="/wiki/Antimony" title="Antimony">Sb</a>
+</td>
+<td bgcolor="#fdff8c">52<br /><a href="/wiki/Tellurium" title="Tellurium">Te</a>
+</td>
+<td bgcolor="#fdff8c">53<br /><a href="/wiki/Iodine" title="Iodine">I</a>
+</td>
+<td bgcolor="#fdff8c">54<br /><a href="/wiki/Xenon" title="Xenon">Xe</a>
+</td>
+</tr>
+<tr>
+<td bgcolor="#ff9999">55<br /><a href="https://factvenguyento.blogspot.com/2021/10/xesi-kim-loai-mem-nhat-trai-at.html#" title="Caesium"><b>Cs</b></a>
+</td>
+<td bgcolor="#ff9999">56<br /><a href="/wiki/Barium" title="Barium">Ba</a>
+</td>
+<td bgcolor="#9bff99">57<br /><a href="/wiki/Lanthanum" title="Lanthanum">La</a>
+</td>
+<td bgcolor="#9bff99">58<br /><a href="/wiki/Cerium" title="Cerium">Ce</a>
+</td>
+<td bgcolor="#9bff99">59<br /><a href="/wiki/Praseodymium" title="Praseodymium">Pr</a>
+</td>
+<td bgcolor="#9bff99">60<br /><a href="/wiki/Neodymium" title="Neodymium">Nd</a>
+</td>
+<td bgcolor="#9bff99">61<br /><a href="/wiki/Promethium" title="Promethium">Pm</a>
+</td>
+<td bgcolor="#9bff99">62<br /><a href="/wiki/Samarium" title="Samarium">Sm</a>
+</td>
+<td bgcolor="#9bff99">63<br /><a href="/wiki/Europium" title="Europium">Eu</a>
+</td>
+<td bgcolor="#9bff99">64<br /><a href="/wiki/Gadolinium" title="Gadolinium">Gd</a>
+</td>
+<td bgcolor="#9bff99">65<br /><a href="/wiki/Terbium" title="Terbium">Tb</a>
+</td>
+<td bgcolor="#9bff99">66<br /><a href="/wiki/Dysprosium" title="Dysprosium">Dy</a>
+</td>
+<td bgcolor="#9bff99">67<br /><a href="/wiki/Holmium" title="Holmium">Ho</a>
+</td>
+<td bgcolor="#9bff99">68<br /><a href="/wiki/Erbium" title="Erbium">Er</a>
+</td>
+<td bgcolor="#9bff99">69<br /><a href="/wiki/Thulium" title="Thulium">Tm</a>
+</td>
+<td bgcolor="#9bff99">70<br /><a href="/wiki/Ytterbium" title="Ytterbium">Yb</a>
+</td>
+<td bgcolor="#99ccff">71<br /><a href="/wiki/Lutetium" title="Lutetium">Lu</a>
+</td>
+<td bgcolor="#99ccff">72<br /><a href="/wiki/Hafnium" title="Hafnium">Hf</a>
+</td>
+<td bgcolor="#99ccff">73<br /><a href="/wiki/Tantalum" title="Tantalum">Ta</a>
+</td>
+<td bgcolor="#99ccff">74<br /><a href="/wiki/Tungsten" title="Tungsten">W</a>
+</td>
+<td bgcolor="#99ccff">75<br /><a href="/wiki/Rhenium" title="Rhenium">Re</a>
+</td>
+<td bgcolor="#99ccff">76<br /><a href="https://factvenguyento.blogspot.com/2021/10/osmium-kim-loai-nang-nhat-gioi.html" title="Osmium"><b>Os</b></a>
+</td>
+<td bgcolor="#99ccff">77<br /><a href="/wiki/Iridium" title="Iridium">Ir</a>
+</td>
+<td bgcolor="#99ccff">78<br /><a href="https://factvenguyento.blogspot.com/2021/10/platinum.html" title="Platinum"><b>Pt</b></a>
+</td>
+<td bgcolor="#99ccff">79<br /><a href="/wiki/Gold" title="Gold">Au</a>
+</td>
+<td bgcolor="#99ccff">80<br /><a href="https://factvenguyento.blogspot.com/2021/10/blog-post.html" title="Mercury (element)"><b>Hg</b></a>
+</td>
+<td bgcolor="#fdff8c">81<br /><a href="https://factvenguyento.blogspot.com/2021/10/thallium.html" title="Thallium"><b>Tl</b></a>
+</td>
+<td bgcolor="#fdff8c">82<br /><a href="/wiki/Lead" title="Lead">Pb</a>
+</td>
+<td bgcolor="#fdff8c">83<br /><a href="/wiki/Bismuth" title="Bismuth">Bi</a>
+</td>
+<td bgcolor="#fdff8c">84<br /><a href="https://factvenguyento.blogspot.com/2021/10/polonium.html" title="Polonium"><b>Po</b></a>
+</td>
+<td bgcolor="#fdff8c">85<br /><a href="/wiki/Astatine" title="Astatine">At</a>
+</td>
+<td bgcolor="#fdff8c">86<br /><a href="/wiki/Radon" title="Radon">Rn</a>
+</td>
+</tr>
+<tr>
+<td bgcolor="#ff9999">87<br /><a href="/wiki/Francium" title="Francium">Fr</a>
+</td>
+<td bgcolor="#ff9999">88<br /><a href="https://factvenguyento.blogspot.com/2021/10/blog-post_9.html" title="Radium"><b>Ra</b></a>
+</td>
+<td bgcolor="#9bff99">89<br /><a href="/wiki/Actinium" title="Actinium">Ac</a>
+</td>
+<td bgcolor="#9bff99">90<br /><a href="https://factvenguyento.blogspot.com/2021/10/thorium.html" title="Thorium"><b>Th</b></a>
+</td>
+<td bgcolor="#9bff99">91<br /><a href="/wiki/Protactinium" title="Protactinium">Pa</a>
+</td>
+<td bgcolor="#9bff99">92<br /><a href="/wiki/Uranium" title="Uranium">U</a>
+</td>
+<td bgcolor="#9bff99">93<br /><a href="/wiki/Neptunium" title="Neptunium">Np</a>
+</td>
+<td bgcolor="#9bff99">94<br /><a href="/wiki/Plutonium" title="Plutonium">Pu</a>
+</td>
+<td bgcolor="#9bff99">95<br /><a href="/wiki/Americium" title="Americium">Am</a>
+</td>
+<td bgcolor="#9bff99">96<br /><a href="/wiki/Curium" title="Curium">Cm</a>
+</td>
+<td bgcolor="#9bff99">97<br /><a href="/wiki/Berkelium" title="Berkelium">Bk</a>
+</td>
+<td bgcolor="#9bff99">98<br /><a href="/wiki/Californium" title="Californium">Cf</a>
+</td>
+<td bgcolor="#9bff99">99<br /><a href="/wiki/Einsteinium" title="Einsteinium">Es</a>
+</td>
+<td bgcolor="#9bff99">100<br /><a href="/wiki/Fermium" title="Fermium">Fm</a>
+</td>
+<td bgcolor="#9bff99">101<br /><a href="/wiki/Mendelevium" title="Mendelevium">Md</a>
+</td>
+<td bgcolor="#9bff99">102<br /><a href="/wiki/Nobelium" title="Nobelium">No</a>
+</td>
+<td bgcolor="#99ccff">103<br /><a href="/wiki/Lawrencium" title="Lawrencium">Lr</a>
+</td>
+<td bgcolor="#99ccff">104<br /><a href="/wiki/Rutherfordium" title="Rutherfordium">Rf</a>
+</td>
+<td bgcolor="#99ccff">105<br /><a href="/wiki/Dubnium" title="Dubnium">Db</a>
+</td>
+<td bgcolor="#99ccff">106<br /><a href="/wiki/Seaborgium" title="Seaborgium">Sg</a>
+</td>
+<td bgcolor="#99ccff">107<br /><a href="/wiki/Bohrium" title="Bohrium">Bh</a>
+</td>
+<td bgcolor="#99ccff">108<br /><a href="/wiki/Hassium" title="Hassium">Hs</a>
+</td>
+<td bgcolor="#99ccff">109<br /><a href="/wiki/Meitnerium" title="Meitnerium">Mt</a>
+</td>
+<td bgcolor="#99ccff">110<br /><a href="/wiki/Darmstadtium" title="Darmstadtium">Ds</a>
+</td>
+<td bgcolor="#99ccff">111<br /><a href="/wiki/Roentgenium" title="Roentgenium">Rg</a>
+</td>
+<td bgcolor="#99ccff">112<br /><a href="/wiki/Copernicium" title="Copernicium">Cn</a>
+</td>
+<td bgcolor="#fdff8c">113<br /><a href="/wiki/Nihonium" title="Nihonium">Nh</a>
+</td>
+<td bgcolor="#fdff8c">114<br /><a href="/wiki/Flerovium" title="Flerovium">Fl</a>
+</td>
+<td bgcolor="#fdff8c">115<br /><a href="/wiki/Moscovium" title="Moscovium">Mc</a>
+</td>
+<td bgcolor="#fdff8c">116<br /><a href="/wiki/Livermorium" title="Livermorium">Lv</a>
+</td>
+<td bgcolor="#fdff8c">117<br /><a href="/wiki/Tennessine" title="Tennessine">Ts</a>
+</td>
+<td bgcolor="#fdff8c">118<br /><a href="/wiki/Oganesson" title="Oganesson">Og</a>
+</td>
+</tr></tbody></table>
+<p> chỉ 16 nguyến tố in đậm là nhóm mình làm thôi <br> những nguyên tố còn lại tụi mình đã dẫn link wiki cho mấy bạn rồi đó :)) </p>
 </body>
 </html>
