@@ -1,489 +1,153 @@
 <!DOCTYPE html>
 <html>
-<head>
+<head><meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
-body {background-color: powderblue;}
-h1   {
-	border: 2px solid yellow;
-    padding: 30px;
-    margin: 30px;
-    background-color: tomato;
-	color: blue;
-    
-    font-size: 250%;
-    text-align: center; }
-h2    {
-    text-align: center;}
-p	  {text-align: center;}
-</style>
+
+
+
+
+body {
+background-image: url("https://scontent.xx.fbcdn.net/v/t1.15752-9/p403x403/254972800_317029896536819_5306571101018878880_n.png?_nc_cat=110&ccb=1-5&_nc_sid=aee45a&_nc_ohc=a1QiT8LG5ukAX9ksPKm&_nc_ad=z-m&_nc_cid=0&_nc_ht=scontent.xx&oh=29db3beed52ebfae6036056754a6d33d&oe=61AEFB25");
+
+}
+
+   #flipbook {
+ display: block;
+  margin-left: auto;
+  margin-right: auto;
+ filter: drop-shadow(20px 15px 4px #52504f);
+}
+
+
+/* CSS */
+#prevBtn, #nextBtn {
+  appearance: button;
+  background-color: #000;
+  background-image: none;
+  border: 1px solid #000;
+  border-radius: 4px;
+  box-shadow: #fff 4px 4px 0 0,#000 4px 4px 0 1px;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  font-family: ITCAvantGardeStd-Bk,Arial,sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  margin: 0 5px 10px 0;
+  overflow: visible;
+  padding: 12px 40px;
+  text-align: center;
+  text-transform: none;
+  touch-action: manipulation;
+  user-select: none;
+  -webkit-user-select: none;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+#prevBtn, #nextBtn:focus {
+  text-decoration: none;
+}
+
+#prevBtn, #nextBtn:hover {
+  text-decoration: none;
+}
+
+#prevBtn, #nextBtn:active {
+  box-shadow: rgba(0, 0, 0, .125) 0 3px 5px inset;
+  outline: 0;
+}
+
+#prevBtn, #nextBtn :not([disabled]):active {
+  box-shadow: #fff 2px 2px 0 0, #000 2px 2px 0 1px;
+  transform: translate(2px, 2px);
+}
+
+@media (min-width: 768px) {
+#prevBtn, #nextBtn {
+    padding: 0.5px 10px;
+  }
+}
+  </style>
 </head>
 <body>
+<hr/> Page:
+<input type="number" id="pageFld" min=1/>
+<button id="prevBtn" >Previous</button>
+<button id="nextBtn">Next</button>
+  
+<div id="flipbook">
+		<div class="hard"> <img src= "https://scontent.fsgn2-5.fna.fbcdn.net/v/t1.15752-9/254119043_409625057404272_4088214219676167737_n.png?_nc_cat=104&ccb=1-5&_nc_sid=ae9488&_nc_ohc=4ZIDPNQxXDwAX-2vlBJ&_nc_ht=scontent.fsgn2-5.fna&oh=c555392a45b90f48c1cc74e79951e54f&oe=61AB8BCF" style="width:500px;"> </div>
+		<div class="hard"> <img src= "https://scontent.fsgn2-3.fna.fbcdn.net/v/t1.15752-9/254482272_169082895439393_1671095006154667929_n.png?_nc_cat=108&ccb=1-5&_nc_sid=ae9488&_nc_ohc=w-k8BIFw5DgAX-BRYoK&_nc_ht=scontent.fsgn2-3.fna&oh=cf8a0f75a61730c1ec046ac78e8b0b73&oe=61ADC2E7" style="width:500px;"></div>
 
-<h1>Facts về nguyên tố</h1>
-<h2>Đứa con tinh thần của các bạn tổ 1-10CH</h2>
-<table class="wikitable">
-<tbody><tr>
-<td bgcolor="#ff9999">1<br /><a href="/wiki/Hydrogen" title="Hydrogen">H</a>
-</td>
-<td>
-</td>
-<td>
-</td>
-<td>
-</td>
-<td>
-</td>
-<td>
-</td>
-<td>
-</td>
-<td>
-</td>
-<td>
-</td>
-<td>
-</td>
-<td>
-</td>
-<td>
-</td>
-<td>
-</td>
-<td>
-</td>
-<td>
-</td>
-<td>
-</td>
-<td>
-</td>
-<td>
-</td>
-<td>
-</td>
-<td>
-</td>
-<td>
-</td>
-<td>
-</td>
-<td>
-</td>
-<td>
-</td>
-<td>
-</td>
-<td>
-</td>
-<td>
-</td>
-<td>
-</td>
-<td>
-</td>
-<td>
-</td>
-<td>
-</td>
-<td bgcolor="#ff9999">2<br /><a href="/wiki/Helium" title="Helium">He</a>
-</td>
-</tr>
-<tr>
-<td bgcolor="#ff9999">3<br /><a href="/wiki/Lithium" title="Lithium">Li</a>
-</td>
-<td bgcolor="#ff9999">4<br /><a href="/wiki/Beryllium" title="Beryllium">Be</a>
-</td>
-<td>
-</td>
-<td>
-</td>
-<td>
-</td>
-<td>
-</td>
-<td>
-</td>
-<td>
-</td>
-<td>
-</td>
-<td>
-</td>
-<td>
-</td>
-<td>
-</td>
-<td>
-</td>
-<td>
-</td>
-<td>
-</td>
-<td>
-</td>
-<td>
-</td>
-<td>
-</td>
-<td>
-</td>
-<td>
-</td>
-<td>
-</td>
-<td>
-</td>
-<td>
-</td>
-<td>
-</td>
-<td>
-</td>
-<td>
-</td>
-<td bgcolor="#fdff8c">5<br /><a href="/wiki/Boron" title="Boron">B</a>
-</td>
-<td bgcolor="#fdff8c">6<br /><a href="/wiki/Carbon" title="Carbon">C</a>
-</td>
-<td bgcolor="#fdff8c">7<br /><a href="/wiki/Nitrogen" title="Nitrogen">N</a>
-</td>
-<td bgcolor="#fdff8c">8<br /><a href="/wiki/Oxygen" title="Oxygen">O</a>
-</td>
-<td bgcolor="#fdff8c">9<br /><a href="https://factvenguyento.blogspot.com/2021/10/flo.html" title="Fluorine"><b>F</b></a>
-</td>
-<td bgcolor="#fdff8c">10<br /><a href="https://factvenguyento.blogspot.com/2021/10/neon.html" title="Neon"><b>Ne</b></a>
-</td>
-</tr>
-<tr>
-<td bgcolor="#ff9999">11<br /><a href="/wiki/Sodium" title="Sodium">Na</a>
-</td>
-<td bgcolor="#ff9999">12<br /><a href="/wiki/Magnesium" title="Magnesium">Mg</a>
-</td>
-<td>
-</td>
-<td>
-</td>
-<td>
-</td>
-<td>
-</td>
-<td>
-</td>
-<td>
-</td>
-<td>
-</td>
-<td>
-</td>
-<td>
-</td>
-<td>
-</td>
-<td>
-</td>
-<td>
-</td>
-<td>
-</td>
-<td>
-</td>
-<td>
-</td>
-<td>
-</td>
-<td>
-</td>
-<td>
-</td>
-<td>
-</td>
-<td>
-</td>
-<td>
-</td>
-<td>
-</td>
-<td>
-</td>
-<td>
-</td>
-<td bgcolor="#fdff8c">13<br /><a href="/wiki/Aluminium" title="Aluminium">Al</a>
-</td>
-<td bgcolor="#fdff8c">14<br /><a href="/wiki/Silicon" title="Silicon">Si</a>
-</td>
-<td bgcolor="#fdff8c">15<br /><a href="https://factvenguyento.blogspot.com/2021/10/phosphor.html" title="Phosphorus"><b>P</b></a>
-</td>
-<td bgcolor="#fdff8c">16<br /><a href="/wiki/Sulfur" title="Sulfur">S</a>
-</td>
-<td bgcolor="#fdff8c">17<br /><a href="https://factvenguyento.blogspot.com/2021/10/clo.html" title="Chlorine"><b>Cl</b></a>
-</td>
-<td bgcolor="#fdff8c">18<br /><a href="/wiki/Argon" title="Argon">Ar</a>
-</td>
-</tr>
-<tr>
-<td bgcolor="#ff9999">19<br /><a href="/wiki/Potassium" title="Potassium">K</a>
-</td>
-<td bgcolor="#ff9999">20<br /><a href="/wiki/Calcium" title="Calcium">Ca</a>
-</td>
-<td>
-</td>
-<td>
-</td>
-<td>
-</td>
-<td>
-</td>
-<td>
-</td>
-<td>
-</td>
-<td>
-</td>
-<td>
-</td>
-<td>
-</td>
-<td>
-</td>
-<td>
-</td>
-<td>
-</td>
-<td>
-</td>
-<td>
-</td>
-<td bgcolor="#99ccff">21<br /><a href="/wiki/Scandium" title="Scandium">Sc</a>
-</td>
-<td bgcolor="#99ccff">22<br /><a href="https://factvenguyento.blogspot.com/2021/10/titanium.html" title="Titanium"><b>Ti</b></a>
-</td>
-<td bgcolor="#99ccff">23<br /><a href="/wiki/Vanadium" title="Vanadium">V</a>
-</td>
-<td bgcolor="#99ccff">24<br /><a href="https://factvenguyento.blogspot.com/2021/10/crom-kim-loai-cung-nhat-gioi.html" title="Chromium"><b>Cr</b></a>
-</td>
-<td bgcolor="#99ccff">25<br /><a href="/wiki/Manganese" title="Manganese">Mn</a>
-</td>
-<td bgcolor="#99ccff">26<br /><a href="/wiki/Iron" title="Iron">Fe</a>
-</td>
-<td bgcolor="#99ccff">27<br /><a href="/wiki/Cobalt" title="Cobalt">Co</a>
-</td>
-<td bgcolor="#99ccff">28<br /><a href="/wiki/Nickel" title="Nickel">Ni</a>
-</td>
-<td bgcolor="#99ccff">29<br /><a href="/wiki/Copper" title="Copper">Cu</a>
-</td>
-<td bgcolor="#99ccff">30<br /><a href="/wiki/Zinc" title="Zinc">Zn</a>
-</td>
-<td bgcolor="#fdff8c">31<br /><a href="/wiki/Gallium" title="Gallium">Ga</a>
-</td>
-<td bgcolor="#fdff8c">32<br /><a href="/wiki/Germanium" title="Germanium">Ge</a>
-</td>
-<td bgcolor="#fdff8c">33<br /><a href="/wiki/Arsenic" title="Arsenic">As</a>
-</td>
-<td bgcolor="#fdff8c">34<br /><a href="/wiki/Selenium" title="Selenium">Se</a>
-</td>
-<td bgcolor="#fdff8c">35<br /><a href="/wiki/Bromine" title="Bromine">Br</a>
-</td>
-<td bgcolor="#fdff8c">36<br /><a href="/wiki/Krypton" title="Krypton">Kr</a>
-</td>
-</tr>
-<tr>
-<td bgcolor="#ff9999">37<br /><a href="/wiki/Rubidium" title="Rubidium">Rb</a>
-</td>
-<td bgcolor="#ff9999">38<br /><a href="/wiki/Strontium" title="Strontium">Sr</a>
-</td>
-<td>
-</td>
-<td>
-</td>
-<td>
-</td>
-<td>
-</td>
-<td>
-</td>
-<td>
-</td>
-<td>
-</td>
-<td>
-</td>
-<td>
-</td>
-<td>
-</td>
-<td>
-</td>
-<td>
-</td>
-<td>
-</td>
-<td>
-</td>
-<td bgcolor="#99ccff">39<br /><a href="/wiki/Yttrium" title="Yttrium">Y</a>
-</td>
-<td bgcolor="#99ccff">40<br /><a href="/wiki/Zirconium" title="Zirconium">Zr</a>
-</td>
-<td bgcolor="#99ccff">41<br /><a href="/wiki/Niobium" title="Niobium">Nb</a>
-</td>
-<td bgcolor="#99ccff">42<br /><a href="/wiki/Molybdenum" title="Molybdenum">Mo</a>
-</td>
-<td bgcolor="#99ccff">43<br /><a href="/wiki/Technetium" title="Technetium">Tc</a>
-</td>
-<td bgcolor="#99ccff">44<br /><a href="/wiki/Ruthenium" title="Ruthenium">Ru</a>
-</td>
-<td bgcolor="#99ccff">45<br /><a href="/wiki/Rhodium" title="Rhodium">Rh</a>
-</td>
-<td bgcolor="#99ccff">46<br /><a href="/wiki/Palladium" title="Palladium">Pd</a>
-</td>
-<td bgcolor="#99ccff">47<br /><a href="/wiki/Silver" title="Silver">Ag</a>
-</td>
-<td bgcolor="#99ccff">48<br /><a href="/wiki/Cadmium" title="Cadmium">Cd</a>
-</td>
-<td bgcolor="#fdff8c">49<br /><a href="/wiki/Indium" title="Indium">In</a>
-</td>
-<td bgcolor="#fdff8c">50<br /><a href="/wiki/Tin" title="Tin">Sn</a>
-</td>
-<td bgcolor="#fdff8c">51<br /><a href="/wiki/Antimony" title="Antimony">Sb</a>
-</td>
-<td bgcolor="#fdff8c">52<br /><a href="/wiki/Tellurium" title="Tellurium">Te</a>
-</td>
-<td bgcolor="#fdff8c">53<br /><a href="/wiki/Iodine" title="Iodine">I</a>
-</td>
-<td bgcolor="#fdff8c">54<br /><a href="/wiki/Xenon" title="Xenon">Xe</a>
-</td>
-</tr>
-<tr>
-<td bgcolor="#ff9999">55<br /><a href="https://factvenguyento.blogspot.com/2021/10/xesi-kim-loai-mem-nhat-trai-at.html#" title="Caesium"><b>Cs</b></a>
-</td>
-<td bgcolor="#ff9999">56<br /><a href="/wiki/Barium" title="Barium">Ba</a>
-</td>
-<td bgcolor="#9bff99">57<br /><a href="/wiki/Lanthanum" title="Lanthanum">La</a>
-</td>
-<td bgcolor="#9bff99">58<br /><a href="/wiki/Cerium" title="Cerium">Ce</a>
-</td>
-<td bgcolor="#9bff99">59<br /><a href="/wiki/Praseodymium" title="Praseodymium">Pr</a>
-</td>
-<td bgcolor="#9bff99">60<br /><a href="/wiki/Neodymium" title="Neodymium">Nd</a>
-</td>
-<td bgcolor="#9bff99">61<br /><a href="/wiki/Promethium" title="Promethium">Pm</a>
-</td>
-<td bgcolor="#9bff99">62<br /><a href="/wiki/Samarium" title="Samarium">Sm</a>
-</td>
-<td bgcolor="#9bff99">63<br /><a href="/wiki/Europium" title="Europium">Eu</a>
-</td>
-<td bgcolor="#9bff99">64<br /><a href="/wiki/Gadolinium" title="Gadolinium">Gd</a>
-</td>
-<td bgcolor="#9bff99">65<br /><a href="/wiki/Terbium" title="Terbium">Tb</a>
-</td>
-<td bgcolor="#9bff99">66<br /><a href="/wiki/Dysprosium" title="Dysprosium">Dy</a>
-</td>
-<td bgcolor="#9bff99">67<br /><a href="/wiki/Holmium" title="Holmium">Ho</a>
-</td>
-<td bgcolor="#9bff99">68<br /><a href="/wiki/Erbium" title="Erbium">Er</a>
-</td>
-<td bgcolor="#9bff99">69<br /><a href="/wiki/Thulium" title="Thulium">Tm</a>
-</td>
-<td bgcolor="#9bff99">70<br /><a href="/wiki/Ytterbium" title="Ytterbium">Yb</a>
-</td>
-<td bgcolor="#99ccff">71<br /><a href="/wiki/Lutetium" title="Lutetium">Lu</a>
-</td>
-<td bgcolor="#99ccff">72<br /><a href="/wiki/Hafnium" title="Hafnium">Hf</a>
-</td>
-<td bgcolor="#99ccff">73<br /><a href="/wiki/Tantalum" title="Tantalum">Ta</a>
-</td>
-<td bgcolor="#99ccff">74<br /><a href="/wiki/Tungsten" title="Tungsten">W</a>
-</td>
-<td bgcolor="#99ccff">75<br /><a href="/wiki/Rhenium" title="Rhenium">Re</a>
-</td>
-<td bgcolor="#99ccff">76<br /><a href="https://factvenguyento.blogspot.com/2021/10/osmium-kim-loai-nang-nhat-gioi.html" title="Osmium"><b>Os</b></a>
-</td>
-<td bgcolor="#99ccff">77<br /><a href="/wiki/Iridium" title="Iridium">Ir</a>
-</td>
-<td bgcolor="#99ccff">78<br /><a href="https://factvenguyento.blogspot.com/2021/10/platinum.html" title="Platinum"><b>Pt</b></a>
-</td>
-<td bgcolor="#99ccff">79<br /><a href="/wiki/Gold" title="Gold">Au</a>
-</td>
-<td bgcolor="#99ccff">80<br /><a href="https://factvenguyento.blogspot.com/2021/10/blog-post.html" title="Mercury (element)"><b>Hg</b></a>
-</td>
-<td bgcolor="#fdff8c">81<br /><a href="https://factvenguyento.blogspot.com/2021/10/thallium.html" title="Thallium"><b>Tl</b></a>
-</td>
-<td bgcolor="#fdff8c">82<br /><a href="/wiki/Lead" title="Lead">Pb</a>
-</td>
-<td bgcolor="#fdff8c">83<br /><a href="/wiki/Bismuth" title="Bismuth">Bi</a>
-</td>
-<td bgcolor="#fdff8c">84<br /><a href="https://factvenguyento.blogspot.com/2021/10/polonium.html" title="Polonium"><b>Po</b></a>
-</td>
-<td bgcolor="#fdff8c">85<br /><a href="/wiki/Astatine" title="Astatine">At</a>
-</td>
-<td bgcolor="#fdff8c">86<br /><a href="/wiki/Radon" title="Radon">Rn</a>
-</td>
-</tr>
-<tr>
-<td bgcolor="#ff9999">87<br /><a href="/wiki/Francium" title="Francium">Fr</a>
-</td>
-<td bgcolor="#ff9999">88<br /><a href="https://factvenguyento.blogspot.com/2021/10/blog-post_9.html" title="Radium"><b>Ra</b></a>
-</td>
-<td bgcolor="#9bff99">89<br /><a href="/wiki/Actinium" title="Actinium">Ac</a>
-</td>
-<td bgcolor="#9bff99">90<br /><a href="https://factvenguyento.blogspot.com/2021/10/thorium.html" title="Thorium"><b>Th</b></a>
-</td>
-<td bgcolor="#9bff99">91<br /><a href="/wiki/Protactinium" title="Protactinium">Pa</a>
-</td>
-<td bgcolor="#9bff99">92<br /><a href="/wiki/Uranium" title="Uranium">U</a>
-</td>
-<td bgcolor="#9bff99">93<br /><a href="/wiki/Neptunium" title="Neptunium">Np</a>
-</td>
-<td bgcolor="#9bff99">94<br /><a href="/wiki/Plutonium" title="Plutonium">Pu</a>
-</td>
-<td bgcolor="#9bff99">95<br /><a href="/wiki/Americium" title="Americium">Am</a>
-</td>
-<td bgcolor="#9bff99">96<br /><a href="/wiki/Curium" title="Curium">Cm</a>
-</td>
-<td bgcolor="#9bff99">97<br /><a href="/wiki/Berkelium" title="Berkelium">Bk</a>
-</td>
-<td bgcolor="#9bff99">98<br /><a href="/wiki/Californium" title="Californium">Cf</a>
-</td>
-<td bgcolor="#9bff99">99<br /><a href="/wiki/Einsteinium" title="Einsteinium">Es</a>
-</td>
-<td bgcolor="#9bff99">100<br /><a href="/wiki/Fermium" title="Fermium">Fm</a>
-</td>
-<td bgcolor="#9bff99">101<br /><a href="/wiki/Mendelevium" title="Mendelevium">Md</a>
-</td>
-<td bgcolor="#9bff99">102<br /><a href="/wiki/Nobelium" title="Nobelium">No</a>
-</td>
-<td bgcolor="#99ccff">103<br /><a href="/wiki/Lawrencium" title="Lawrencium">Lr</a>
-</td>
-<td bgcolor="#99ccff">104<br /><a href="/wiki/Rutherfordium" title="Rutherfordium">Rf</a>
-</td>
-<td bgcolor="#99ccff">105<br /><a href="/wiki/Dubnium" title="Dubnium">Db</a>
-</td>
-<td bgcolor="#99ccff">106<br /><a href="/wiki/Seaborgium" title="Seaborgium">Sg</a>
-</td>
-<td bgcolor="#99ccff">107<br /><a href="/wiki/Bohrium" title="Bohrium">Bh</a>
-</td>
-<td bgcolor="#99ccff">108<br /><a href="/wiki/Hassium" title="Hassium">Hs</a>
-</td>
-<td bgcolor="#99ccff">109<br /><a href="/wiki/Meitnerium" title="Meitnerium">Mt</a>
-</td>
-<td bgcolor="#99ccff">110<br /><a href="/wiki/Darmstadtium" title="Darmstadtium">Ds</a>
-</td>
-<td bgcolor="#99ccff">111<br /><a href="/wiki/Roentgenium" title="Roentgenium">Rg</a>
-</td>
-<td bgcolor="#99ccff">112<br /><a href="/wiki/Copernicium" title="Copernicium">Cn</a>
-</td>
-<td bgcolor="#fdff8c">113<br /><a href="/wiki/Nihonium" title="Nihonium">Nh</a>
-</td>
-<td bgcolor="#fdff8c">114<br /><a href="/wiki/Flerovium" title="Flerovium">Fl</a>
-</td>
-<td bgcolor="#fdff8c">115<br /><a href="/wiki/Moscovium" title="Moscovium">Mc</a>
-</td>
-<td bgcolor="#fdff8c">116<br /><a href="/wiki/Livermorium" title="Livermorium">Lv</a>
-</td>
-<td bgcolor="#fdff8c">117<br /><a href="/wiki/Tennessine" title="Tennessine">Ts</a>
-</td>
-<td bgcolor="#fdff8c">118<br /><a href="/wiki/Oganesson" title="Oganesson">Og</a>
-</td>
-</tr></tbody></table>
-<p> chỉ 16 nguyến tố in đậm là nhóm mình làm thôi <br> những nguyên tố còn lại tụi mình đã dẫn link wiki cho mấy bạn rồi đó :)) </p>
+		<div class="pg1"> <img src= "https://scontent.fsgn2-2.fna.fbcdn.net/v/t1.15752-9/253912221_315235096738154_111063824101778649_n.png?_nc_cat=105&ccb=1-5&_nc_sid=ae9488&_nc_ohc=N63JiS7evrsAX_RpYhe&tn=hiMNlyjIq29zYn-7&_nc_ht=scontent.fsgn2-2.fna&oh=0468c5678ca50c9e97ac6f524889be5e&oe=61AE401D" style="width:500px;"> </div>
+		<div class="pg2"> <img src= "https://scontent.fsgn2-5.fna.fbcdn.net/v/t1.15752-9/254762929_853951521958020_4552867306871851633_n.png?_nc_cat=104&ccb=1-5&_nc_sid=ae9488&_nc_ohc=usfndWr7ofUAX93oMTT&_nc_ht=scontent.fsgn2-5.fna&oh=d5ee45008155a29c256d29057c1cb0ed&oe=61AD6CBC" style="width:500px;"> </div>
+		<div class="pg3"> <img src= "https://scontent.fsgn2-6.fna.fbcdn.net/v/t1.15752-9/254111378_277687140928451_4774080926724337742_n.png?_nc_cat=110&ccb=1-5&_nc_sid=ae9488&_nc_ohc=8rsdW08EfigAX_4el8w&_nc_ht=scontent.fsgn2-6.fna&oh=29676737b1ab78f4deebb585869b0931&oe=61AB400D" style="width:500px;"> </div>
+		<div class="pg4"> <img src= "https://scontent.fsgn2-3.fna.fbcdn.net/v/t1.15752-9/254276714_388843446307077_4533463899249387485_n.png?_nc_cat=106&ccb=1-5&_nc_sid=ae9488&_nc_ohc=IaZgisX60HkAX9ZNydL&_nc_ht=scontent.fsgn2-3.fna&oh=9d12941ac093084c262c19b006130395&oe=61AC7F8A" style="width:500px;"></div>
+		<div class="pg5"> <img src= "https://scontent.fsgn2-2.fna.fbcdn.net/v/t1.15752-9/253859474_2318935191575329_2589045234872341143_n.png?_nc_cat=100&ccb=1-5&_nc_sid=ae9488&_nc_ohc=w2g8epI1tqkAX_ky0ex&tn=hiMNlyjIq29zYn-7&_nc_ht=scontent.fsgn2-2.fna&oh=7546316838ee12fcc57805e8dbb63154&oe=61AC0FBF" style="width:500px;"></div>
+		<div class="pg6"> <img src= "https://scontent.fsgn2-2.fna.fbcdn.net/v/t1.15752-9/254610596_250409357115542_4412806417723985969_n.png?_nc_cat=103&ccb=1-5&_nc_sid=ae9488&_nc_ohc=lTpSoVQ_6WYAX_1mmAi&_nc_ht=scontent.fsgn2-2.fna&oh=248fcebcb202b3aee6f524f5fd0f984d&oe=61ADC0E1" style="width:500px;"></div>
+		<div class="pg7"> <img src= "https://scontent.fsgn2-5.fna.fbcdn.net/v/t1.15752-9/254081401_3138623626366561_2126052005427382995_n.png?_nc_cat=104&ccb=1-5&_nc_sid=ae9488&_nc_ohc=EKE4i-blebUAX-l0kkg&_nc_ht=scontent.fsgn2-5.fna&oh=aab6ad4c223a0fe629b3b2901f17533c&oe=61ACF59C" style="width:500px;"></div>
+		<div class="pg8"> <img src= "https://scontent.fsgn2-3.fna.fbcdn.net/v/t1.15752-9/254548498_277566050961700_4159256321865865393_n.png?_nc_cat=106&ccb=1-5&_nc_sid=ae9488&_nc_ohc=9i7Y5uLfmBUAX-o4Y86&_nc_ht=scontent.fsgn2-3.fna&oh=16f479cb6ee63a77e8b57fd0f19a7b5b&oe=61ABA8DF" style="width:500px;"></div>
+		<div class="pg9"> <img src= "https://scontent.fsgn2-6.fna.fbcdn.net/v/t1.15752-9/254294139_315404680422562_5362516534083462257_n.png?_nc_cat=111&ccb=1-5&_nc_sid=ae9488&_nc_ohc=M4NjYY1U1TMAX-X-x_1&_nc_oc=AQnJFFYMkNTbG4XjbqNtF52QpeK-nzJCsdg969sQEuX1MW7bRXsaPZVuukNMETpwZHbetQQVs6NWFOOmCs8yk6Qm&_nc_ht=scontent.fsgn2-6.fna&oh=d38a3485966e8b42017d0a3a8720a2ce&oe=61AB444D" style="width:500px;"></div>
+		<div class="pg10"> <img src= "https://scontent.fsgn2-6.fna.fbcdn.net/v/t1.15752-9/254539857_634044301089380_7918926853229035180_n.png?_nc_cat=110&ccb=1-5&_nc_sid=ae9488&_nc_ohc=4kUFcIqtKmQAX-3IL0R&_nc_ht=scontent.fsgn2-6.fna&oh=37fd9a5d791322a6e04a93532106c1cf&oe=61AD9C84" style="width:500px;"></div>
+		<div class="pg11"> <img src= "https://scontent.fsgn2-2.fna.fbcdn.net/v/t1.15752-9/253951137_242361841210069_8065315169237446371_n.png?_nc_cat=103&ccb=1-5&_nc_sid=ae9488&_nc_ohc=urwgRtBIf-QAX8GMdAA&_nc_oc=AQn1rUCmZz48eiH0s3fUWYnGGa2RzeG453_q3p7dGUf36vERNmmLFn9c1Wd9Mx5t8NfsWkGGICCw7Tr-jX7y29cJ&_nc_ht=scontent.fsgn2-2.fna&oh=17a3421348015d0b0d29772eb27b2853&oe=61ACB696" style="width:500px;"></div>
+		<div class="pg12"> <img src= "https://scontent.fsgn2-3.fna.fbcdn.net/v/t1.15752-9/253190680_250194793826818_6831434425253643669_n.png?_nc_cat=108&ccb=1-5&_nc_sid=ae9488&_nc_ohc=uNdwDxreRZoAX_UMzTY&_nc_ht=scontent.fsgn2-3.fna&oh=acceb8dc11a32c63477a984c17ae2fde&oe=61AEA267" style="width:500px;"></div>
+		<div class="pg13"> <img src= "https://scontent.fsgn2-5.fna.fbcdn.net/v/t1.15752-9/253381948_310184870938651_1739487741324132112_n.png?_nc_cat=102&ccb=1-5&_nc_sid=ae9488&_nc_ohc=zWsWRtJs1Y4AX_6a6mK&tn=hiMNlyjIq29zYn-7&_nc_ht=scontent.fsgn2-5.fna&oh=a8f41047a7a30557b2315f7c9ecfafe4&oe=61AD17E0" style="width:500px;"></div>
+		<div class="pg14"> <img src= "https://scontent.fsgn2-2.fna.fbcdn.net/v/t1.15752-9/254081374_556058715693179_1039810931881983307_n.png?_nc_cat=103&ccb=1-5&_nc_sid=ae9488&_nc_ohc=UrQEd7ysShIAX_DFfNb&tn=hiMNlyjIq29zYn-7&_nc_ht=scontent.fsgn2-2.fna&oh=acf4c88907af2856cefad76d6e810b47&oe=61AD4807" style="width:500px;"></div>
+		<div class="pg15"> <img src= "https://scontent.fsgn2-2.fna.fbcdn.net/v/t1.15752-9/254133257_875435253167255_7745711242059768387_n.png?_nc_cat=100&ccb=1-5&_nc_sid=ae9488&_nc_ohc=NBbuQl-lF3QAX-9ntHB&_nc_ht=scontent.fsgn2-2.fna&oh=895f64611e90f96e48baf64f8f68367f&oe=61AE06FB" style="width:500px;"></div>
+		<div class="pg16"> <img src= "https://scontent.fsgn2-6.fna.fbcdn.net/v/t1.15752-9/253831107_673641030268021_3359278067469177603_n.png?_nc_cat=111&ccb=1-5&_nc_sid=ae9488&_nc_ohc=sQB2_NzbhNsAX9ALJJA&_nc_ht=scontent.fsgn2-6.fna&oh=4894530dd77178555337b5c7c293abf6&oe=61AD820E" style="width:500px;"></div>
+		<div class="pg17"> <img src= "https://scontent.fsgn2-4.fna.fbcdn.net/v/t1.15752-9/253467279_253125620179746_7113350195657515792_n.png?_nc_cat=109&ccb=1-5&_nc_sid=ae9488&_nc_ohc=p44EI5YhqAAAX_cgm1j&_nc_ht=scontent.fsgn2-4.fna&oh=bc23d842e894aa4b36f1840bf095bd40&oe=61AD7A59" style="width:500px;"></div>	
+		<div class="pg18"> <img src= "https://scontent.fsgn2-2.fna.fbcdn.net/v/t1.15752-9/254685680_252565520248293_7551735257675731734_n.png?_nc_cat=103&ccb=1-5&_nc_sid=ae9488&_nc_ohc=29FHgIVigAwAX82RCN5&_nc_ht=scontent.fsgn2-2.fna&oh=e08c235d109e10e714195044c53e41b9&oe=61AF6F6D" style="width:500px;"></div>
+		<div class="pg19"> <img src= "https://scontent.fsgn2-3.fna.fbcdn.net/v/t1.15752-9/253594128_196266775990035_4041265862850428413_n.png?_nc_cat=108&ccb=1-5&_nc_sid=ae9488&_nc_ohc=da7zLuBQEI8AX8rxwNe&_nc_ht=scontent.fsgn2-3.fna&oh=32dfd4e59f75db59660f78af5abf2fc9&oe=61ADFBAE" style="width:500px;"></div>
+		<div class="pg20"> <img src= "https://scontent.fsgn2-2.fna.fbcdn.net/v/t1.15752-9/253298587_317968643136525_2235801898924040209_n.png?_nc_cat=105&ccb=1-5&_nc_sid=ae9488&_nc_ohc=p00DYqaTdTgAX-sT4gA&_nc_ht=scontent.fsgn2-2.fna&oh=5e9376fc0cf90903c330b3f81cddfb60&oe=61ACF076" style="width:500px;"></div>
+		<div class="pg21"> <img src= "https://scontent.fsgn2-5.fna.fbcdn.net/v/t1.15752-9/254032090_641470217233182_8778612860763793986_n.png?_nc_cat=104&ccb=1-5&_nc_sid=ae9488&_nc_ohc=9bUqTF7fXewAX_3oDNz&tn=hiMNlyjIq29zYn-7&_nc_ht=scontent.fsgn2-5.fna&oh=c6ac098843205a8a5b42125ac2b60779&oe=61AD40BC" style="width:500px;"></div>
+		<div class="pg22"> <img src= "https://scontent.fsgn2-3.fna.fbcdn.net/v/t1.15752-9/253840114_3114305675522024_2830988137807487715_n.png?_nc_cat=106&ccb=1-5&_nc_sid=ae9488&_nc_ohc=dIvN0GI9qI0AX_pet7T&_nc_ht=scontent.fsgn2-3.fna&oh=9efe57a90197e18626d962e3ca05cf42&oe=61AF0F2E" style="width:500px;"></div>
+		<div class="pg23"> <img src= "https://scontent.fsgn2-2.fna.fbcdn.net/v/t1.15752-9/254553086_441591670656773_4580142251741988842_n.png?_nc_cat=100&ccb=1-5&_nc_sid=ae9488&_nc_ohc=I9sQudSGAlAAX-S44ts&_nc_ht=scontent.fsgn2-2.fna&oh=2058c4f32fb3330ffcf4c868af77e2d2&oe=61AE20E7" style="width:500px;"></div>
+		<div class="pg24"> <img src= "https://scontent.fsgn2-6.fna.fbcdn.net/v/t1.15752-9/254656085_316810593205063_8443725847571574028_n.png?_nc_cat=111&ccb=1-5&_nc_sid=ae9488&_nc_ohc=QKK6MdMwvtsAX-B_4HT&_nc_oc=AQmA9chagNnTI7DXBkgow6lO4mvC_DZPZQfDzvsp_0kS8dPmeXGfR6cDIO4-9S_oNjlrQj0Wxrd87PQpYvTzHdZc&_nc_ht=scontent.fsgn2-6.fna&oh=e3e7c045b65b0717607e3da8fb17bc42&oe=61AC0E16" style="width:500px;"></div>
+		<div class="pg25"> <img src= "https://scontent.fsgn2-2.fna.fbcdn.net/v/t1.15752-9/253611348_4376533955796299_6134853533574469725_n.png?_nc_cat=105&ccb=1-5&_nc_sid=ae9488&_nc_ohc=YZW6XLj0vawAX-GbenB&_nc_ht=scontent.fsgn2-2.fna&oh=ce887d0e237cdda3285949b5cbf0934e&oe=61AC8AF5" style="width:500px;"></div>
+		<div class="pg26"> <img src= "https://scontent.fsgn2-5.fna.fbcdn.net/v/t1.15752-9/254301579_429335391883595_7308929108589287307_n.png?_nc_cat=104&ccb=1-5&_nc_sid=ae9488&_nc_ohc=uq4F5Xk62nIAX_F607u&_nc_ht=scontent.fsgn2-5.fna&oh=4356f1588b83faf56d49fb9042d81dbe&oe=61AEFA64" style="width:500px;"></div>
+		<div class="pg27"> <img src= "https://scontent.fsgn2-2.fna.fbcdn.net/v/t1.15752-9/254013088_299999955326479_1422413785083997842_n.png?_nc_cat=100&ccb=1-5&_nc_sid=ae9488&_nc_ohc=g0CkyEa_P20AX-hmhJM&_nc_ht=scontent.fsgn2-2.fna&oh=a459aa53f62b6c61a883ddff14a698b0&oe=61AC35C8" style="width:500px;"></div>
+		
+		
+		<div class="hard"><img src= "https://scontent.fsgn2-3.fna.fbcdn.net/v/t1.15752-9/254482272_169082895439393_1671095006154667929_n.png?_nc_cat=108&ccb=1-5&_nc_sid=ae9488&_nc_ohc=w-k8BIFw5DgAX-BRYoK&_nc_ht=scontent.fsgn2-3.fna&oh=cf8a0f75a61730c1ec046ac78e8b0b73&oe=61ADC2E7" style="width:500px;"></div>
+		<div class="hard"></div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://rawgit.com/blasten/turn.js/master/turn.min.js"></script>
+<script>
+$("#flipbook").turn({
+		width: 1000,
+		height: 700,
+		autoCenter: true
+  });
+
+$("#pageFld").val($("#flipbook").turn("page"));
+
+$("#flipbook").bind("turned", function(event, page, view) {
+		$("#pageFld").val(page);
+});
+
+$("#pageFld").change(function() {
+		$("#flipbook").turn("page", $(this).val());
+});
+
+$("#prevBtn").click(function() {
+		$("#flipbook").turn("previous");
+});
+
+$("#nextBtn").click(function() {
+		$("#flipbook").turn("next");
+});
+</script>
+<h3 style="background-color: #8f111e; text-align: center; 
+	margin-top: 15px;
+  margin-bottom: 10px;
+  margin-right: 500px;
+  margin-left: 500px;
+ border-radius: 25px;
+   ">Sản phẩm của nhóm 1-10CH</h3>
 </body>
 </html>
